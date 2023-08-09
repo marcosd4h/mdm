@@ -1,2 +1,1 @@
-# WindowsMDM
-Windows MDM Research Utilities
+# Windows MDM Research Assets
