@@ -6,4 +6,4 @@ Resources from the Black Hat 2023 Talk
 * [MDM server proof of concept](./mdm_server_poc)
 * [Enrollment exploit proof of concept](./mdm_enrollment_client_pocs)
 * [MDMatador C2 server](https://github.com/marcosd4h/MDMatador)
-* [Custom CSP]((./c2runch_csp)
+* [Custom CSP](./c2runch_csp)
