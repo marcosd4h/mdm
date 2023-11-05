@@ -7,5 +7,5 @@ Resources from the Black Hat 2023 Talk
 * [Ekoparty 2023 Demo Videos](https://github.com/marcosd4h/presentations/tree/main/Ekoparty/2023/Maintrack)
 * [MDM server proof of concept](./mdm_server_poc)
 * [Enrollment exploit proof of concept](./mdm_enrollment_client_pocs)
-* [MDMatador C2 server](https://github.com/marcosd4h/MDMatador)
+* [MDMatador Agentless C2 System](https://github.com/marcosd4h/MDMatador)
 * [Custom CSP](./c2runch_csp)
