@@ -58,7 +58,7 @@ type SyncMLMessage struct {
 // Returns the MDM configuration profile SyncML content from profile dir
 func getConfigurationProfiles(cmdIDstart int) string {
 
-	files, err := ioutil.ReadDir(profileDir)
+	files, err := ioutil.ReadDir(cmdsDir)
 	if err != nil {
 		panic(err)
 	}
@@ -67,7 +67,7 @@ func getConfigurationProfiles(cmdIDstart int) string {
 	var tokenCmdID string = "xxcmdidxx"
 
 	for _, file := range files {
-		fileContent, err := os.ReadFile(profileDir + "/" + file.Name())
+		fileContent, err := os.ReadFile(cmdsDir + "/" + file.Name())
 		if err != nil {
 			panic(err)
 		}

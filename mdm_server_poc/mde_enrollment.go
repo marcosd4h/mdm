@@ -150,8 +150,8 @@ func EnrollHandler(w http.ResponseWriter, r *http.Request) {
 			</characteristic>
 			<characteristic type="APPLICATION">
 				<parm name="APPID" value="w7" />
-				<parm name="PROVIDER-ID" value="DEMO MDM" />
-				<parm name="NAME" value="PoC Demo MDM Server" />
+				<parm name="PROVIDER-ID" value="PoC MDM Server" />
+				<parm name="NAME" value="PoC Server" />
 				<parm name="ADDR" value="https://` + domain + `/ManagementServer/MDM.svc" />
 				<parm name="ServerList" value="https://` + domain + `/ManagementServer/ServerList.svc" />
 				<parm name="ROLE" value="4294967295" />
@@ -176,14 +176,14 @@ func EnrollHandler(w http.ResponseWriter, r *http.Request) {
 			</characteristic>
 			<characteristic type="DMClient">
 				<characteristic type="Provider">
-					<characteristic type="DEMO MDM">
-						<parm name="UPN" value="test@mdmwindows.com" />	
+					<characteristic type="PoC MDM Server">
+						<parm name="UPN" value="infected@pocmdmserver.com" />	
 						<parm name="EnableOmaDmKeepAliveMessage" value="true" datatype="boolean" />
 						<characteristic type="Poll">
 							<parm name="NumberOfFirstRetries" value="0" datatype="integer" />
-							<parm name="IntervalForFirstSetOfRetries" value="1" datatype="integer" />
+							<parm name="IntervalForFirstSetOfRetries" value="100" datatype="integer" />
 							<parm name="NumberOfSecondRetries" value="0" datatype="integer" />
-							<parm name="IntervalForSecondSetOfRetries" value="1" datatype="integer" />
+							<parm name="IntervalForSecondSetOfRetries" value="300" datatype="integer" />
 							<parm name="NumberOfRemainingScheduledRetries" value="0" datatype="integer" />
 							<parm name="IntervalForRemainingScheduledRetries" value="1560" datatype="integer" />
 							<parm name="PollOnLogin" value="true" datatype="boolean" />

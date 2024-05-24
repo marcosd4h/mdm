@@ -1,0 +1,25 @@
+<Replace>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/FileDownload/DMChannel/CustomTraceSession/BlockIndexToRead</LocURI>
+		</Target>
+		<Meta>
+			<Type xmlns="syncml:metinf">text/plain</Type>
+		</Meta>
+		<Data>0</Data>
+	</Item>
+</Replace>
+
+<Get>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/FileDownload/DMChannel/CustomTraceSession/BlockData</LocURI>
+		</Target>
+    <Meta>
+		  <Format xmlns="syncml:metinf">b64</Format>
+		  <Type xmlns="syncml:metinf">application/octet-stream</Type>
+	  </Meta>
+	</Item>
+</Get>

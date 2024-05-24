@@ -1,0 +1,20 @@
+<Exec>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/EtwLog/Collectors/CustomTraceSession/TraceControl</LocURI>
+		</Target>
+		<Meta>
+			<Format xmlns="syncml:metinf">chr</Format>
+		</Meta>
+		<Data>START</Data>
+	</Item>
+</Exec>
+<Get>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/EtwLog/Collectors/CustomTraceSession/TraceStatus</LocURI>
+		</Target>
+	</Item>
+</Get>

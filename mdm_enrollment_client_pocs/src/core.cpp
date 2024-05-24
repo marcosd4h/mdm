@@ -163,8 +163,8 @@ void ShowHelp() {
   wprintf(L" whitelisted_mdm_enrollment (Non-elevated local admin MDM Device enrollment\n");
   wprintf(L" exploit_sched_tasks_delete (MDM Enrollment break throuh MDM Schedtasks deletion\n");
   wprintf(L"Usage Examples: \n");
-  wprintf(L" mdm_enrollment_client_pocs.exe --exploit aad_mdm_enrollment --enroll-webservice https://mdm.email.com/enroll\n");
-  wprintf(L" mdm_enrollment_client_pocs.exe --exploit whitelisted_mdm_enrollment --enroll-webservice https://mdm.email.com/enroll\n");
+  wprintf(L" mdm_enrollment_client_pocs.exe --exploit aad_mdm_enrollment --enroll-webservice https://mdm.email.com/EnrollmentServer/Discovery.svc\n");
+  wprintf(L" mdm_enrollment_client_pocs.exe --exploit whitelisted_mdm_enrollment --enroll-webservice https://mdm.email.com/EnrollmentServer/Discovery.svc\n");
   wprintf(L" mdm_enrollment_client_pocs.exe --exploit mdm_sched_tasks\n");
 }
 
@@ -201,7 +201,6 @@ int wmain() {
   }
 
   else {
-    wprintf(L"[-] Target exploit is not supported!\n");
     ShowHelp();
   }
 

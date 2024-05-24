@@ -1,0 +1,70 @@
+<Add>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/EtwLog/Collectors/CustomTraceSession</LocURI>
+		</Target>
+		<Meta>
+			<Format xmlns="syncml:metinf">node</Format>
+		</Meta>
+	</Item>
+</Add>
+<Replace>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/EtwLog/Collectors/CustomTraceSession/TraceLogFileMode</LocURI>
+		</Target>
+		<Meta>
+			<Format xmlns="syncml:metinf">int</Format>
+		</Meta>
+		<Data>1</Data>
+	</Item>
+</Replace>
+<Replace>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/EtwLog/Collectors/CustomTraceSession/LogFileSizeLimitMB</LocURI>
+		</Target>
+		<Meta>
+			<Format xmlns="syncml:metinf">int</Format>
+		</Meta>
+		<Data>1024</Data>
+	</Item>
+</Replace>
+<Replace>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/EtwLog/Collectors/CustomTraceSession/TraceLogFileMode</LocURI>
+		</Target>
+		<Meta>
+			<Format xmlns="syncml:metinf">int</Format>
+		</Meta>
+		<Data>1</Data>
+	</Item>
+</Replace>
+<Add>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/EtwLog/Collectors/CustomTraceSession/Providers/3da494e4-0fe2-415C-b895-fb5265c5c83b</LocURI>
+		</Target>
+		<Meta>
+			<Format xmlns="syncml:metinf">node</Format>
+		</Meta>
+	</Item>
+</Add>
+<Replace>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./Vendor/MSFT/DiagnosticLog/EtwLog/Collectors/CustomTraceSession/Providers/3da494e4-0fe2-415C-b895-fb5265c5c83b/State</LocURI>
+		</Target>
+		<Meta>
+			<Format xmlns="syncml:metinf">bool</Format>
+		</Meta>
+		<Data>true</Data>
+	</Item>
+</Replace>

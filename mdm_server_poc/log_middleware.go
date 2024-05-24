@@ -36,7 +36,7 @@ func drainBody(b io.ReadCloser) (r1, r2 io.ReadCloser, body []byte, err error) {
 func globalHandler(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
-		shouldLog := strings.HasPrefix(r.URL.Path, "/EnrollmentServer") || strings.HasPrefix(r.URL.Path, "/ManagementServer")
+		shouldLog := strings.HasPrefix(r.URL.Path, "/EnrollmentServer") || strings.HasPrefix(r.URL.Path, "/ManagementServer") || strings.HasPrefix(r.URL.Path, "/mycontainer")
 
 		if !shouldLog {
 			// Skip logging, call next handler

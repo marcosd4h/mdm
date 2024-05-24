@@ -75,7 +75,22 @@
    <OutputFileFormat>Flattened</OutputFileFormat>
 </Collection>
 
-
+<! ================ PUT!! working ===== ?>
+<Exec>
+  <CmdID>xxcmdidxx</CmdID>
+  <Item>
+	<Target>
+	  <LocURI>./Vendor/MSFT/DiagnosticLog/DiagnosticArchive/ArchiveDefinition</LocURI>
+	</Target>
+	<Data>&lt;Collection&gt;
+   &lt;ID&gt;49548564-c4d6-4bce-9150-cd2b295e5431&lt;/ID&gt;
+   &lt;SasUrl&gt;&lt;![CDATA[https://mdmwindows.com/mycontainer?sp=aw&amp;st=2020-07-01T23:02:07Z&amp;se=2024-07-02T23:02:07Z&amp;sv=2019-10-10&amp;sr=c&amp;sig=wx9%2FhwrczAI0nZL7zl%2BhfZVfOBvboTAnrGYfjlO%2FRFA%3D]]&gt;&lt;/SasUrl&gt;
+   &lt;Command&gt;%windir%\system32\mdmdiagnosticstool.exe -out %ProgramData%\temp2\&lt;/Command&gt;
+   &lt;OutputFileFormat&gt;Flattened&lt;/OutputFileFormat&gt;
+&lt;/Collection&gt;</Data>
+  </Item>
+</Exec>
+<! ================ minimal working ===== ?>
 
 <Exec>
   <CmdID>xxcmdidxx</CmdID>

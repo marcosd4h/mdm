@@ -5,8 +5,13 @@ import (
 	"net/http"
 )
 
-// TokenHandler return an STS Token
-func TokenHandler(w http.ResponseWriter, r *http.Request) {
+// STS Auth Endpoint returns HTML content that gets render in a webview container
+// The webview container expect a POST request to the appru URL with the wresult parameter set to the auth token
+// The security token in wresult is later passed back in <wsse:BinarySecurityToken>
+// This string is opaque to the enrollment client; the client does not interpret the string.
+// The returned HTML content contains a JS script that will perform a POST request to the appru URL automatically
+// This will set the wresult parameter to the value of auth token
+func STSAuthHandler(w http.ResponseWriter, r *http.Request) {
 	// Print querystring
 
 	if r.Method == http.MethodGet {
@@ -26,7 +31,7 @@ func TokenHandler(w http.ResponseWriter, r *http.Request) {
 				  var input1 = document.createElement('input');
 				  input1.type = 'hidden';
 				  input1.name = 'wresult';
-				  input1.value = 'test magic';
+				  input1.value = 'tokenmagic'; // this is the token paramenter passed through programmatic enrollment
 				  form.appendChild(input1);
 
 				  // Submit the form

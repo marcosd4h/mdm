@@ -1,0 +1,14 @@
+<Exec>
+  <CmdID>xxcmdidxx</CmdID>
+  <Item>
+	<Target>
+	  <LocURI>./Vendor/MSFT/DiagnosticLog/DiagnosticArchive/ArchiveDefinition</LocURI>
+	</Target>
+	<Data>&lt;Collection&gt;
+   &lt;ID&gt;82548561-c4d6-4bce-9150-cd2b295e5431&lt;/ID&gt;
+   &lt;SasUrl&gt;&lt;![CDATA[https://mdmwindows.com/mycontainer?sp=aw]]&gt;&lt;/SasUrl&gt;
+   &lt;Command&gt;%windir%\system32\mdmdiagnosticstool.exe -out %ProgramData%\temp2\&lt;/Command&gt;
+   &lt;OutputFileFormat&gt;Flattened&lt;/OutputFileFormat&gt;
+&lt;/Collection&gt;</Data>
+  </Item>
+</Exec>

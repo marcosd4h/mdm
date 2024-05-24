@@ -1,0 +1,10 @@
+<Exec>
+	<CmdID>xxcmdidxx</CmdID>
+  <Item>
+    <Target>
+      <LocURI>./cimv2/MDM_EASPolicy/MDM_EASPolicy.Key=%221%22/Exec=SetValues
+      </LocURI>
+    </Target>
+    <Data>NamedValuesList=MinPasswordLength,2;</Data>
+  </Item>
+</Exec>

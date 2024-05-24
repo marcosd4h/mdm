@@ -14,18 +14,18 @@ import (
 var domain string
 var deepLinkUserEmail string
 var authPolicy string
-var profileDir string
+var cmdsDir string
 var staticDir string
 var verbose bool
 
 func main() {
-	fmt.Println("Starting Windows MDM Demo Server")
+	fmt.Println("Starting Windows PoC MDM Server")
 
 	// Parse CMD flags. This populates the varibles defined above
-	flag.StringVar(&domain, "domain", "mdmwindows.com", "Your servers primary domain")
-	flag.StringVar(&deepLinkUserEmail, "dl-user-email", "demo@mdmwindows.com", "An email of the enrolling user when using the Deeplink ('/deeplink')")
+	flag.StringVar(&domain, "domain", "pocmdmserver.com", "Your servers primary domain")
+	flag.StringVar(&deepLinkUserEmail, "dl-user-email", "infect@pocmdmserver.com", "An email of the enrolling user when using the Deeplink ('/deeplink')")
 	flag.StringVar(&authPolicy, "auth-policy", "Federated", "An email of the enrolling user when using the Deeplink ('/deeplink')")
-	flag.StringVar(&profileDir, "mdm-profile-dir", "./profile", "The MDM policy directory contains the SyncML MDM profile commmands to enforce to enrolled devices")
+	flag.StringVar(&cmdsDir, "mdm-cmd-dir", "./cmds", "The MDM policy directory contains the SyncML MDM commmands to enforce to enrolled devices")
 	flag.StringVar(&staticDir, "static-dir", "./static", "The directory to serve static files")
 	flag.BoolVar(&verbose, "verbose", true, "HTTP traffic dump")
 	flag.Parse()
@@ -36,7 +36,7 @@ func main() {
 	}
 
 	// Checking if profile directory exists
-	_, err := os.Stat(profileDir)
+	_, err := os.Stat(cmdsDir)
 	if err != nil {
 		if os.IsNotExist(err) {
 			panic("profile directory does not exists")
@@ -63,13 +63,12 @@ func main() {
 	r.Path("/EnrollmentServer/Policy.svc").Methods("POST").HandlerFunc(PolicyHandler)
 	r.Path("/EnrollmentServer/Enrollment.svc").Methods("POST").HandlerFunc(EnrollHandler)
 	r.Path("/ManagementServer/MDM.svc").Methods("POST").HandlerFunc(ManageHandler)
-	r.Path("/EnrollmentServer/Auth.svc").Methods("GET", "POST").HandlerFunc(TokenHandler)
-	r.Path("/TOS.svc").Methods("GET", "POST").HandlerFunc(TOSHandler)
+	r.Path("/EnrollmentServer/Auth.svc").Methods("GET", "POST").HandlerFunc(STSAuthHandler)
 
 	//Static root endpoint
 	r.Path("/").Methods("GET").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=UTF-8")
-		w.Write([]byte(`<center><h1>Windows MDM Demo Server<br></h1>.<center>`))
+		w.Write([]byte(`<center><h1>Windows PoC MDM Server<br></h1>.<center>`))
 	})
 
 	//Static file serve
@@ -78,7 +77,7 @@ func main() {
 
 	// Start HTTPS Server
 	fmt.Println("HTTPS server listening on port 443")
-	err = http.ListenAndServeTLS(":443", "./certs/dev_cert_mdmwindows_com_cert.pem", "./certs/dev_cert_mdmwindows_com.key", globalHandler(r))
+	err = http.ListenAndServeTLS(":443", "./certs/dev_cert_pocmdmserver_com_cert.pem", "./certs/dev_cert_pocmdmserver_com.key", globalHandler(r))
 	if err != nil {
 		panic(err)
 	}

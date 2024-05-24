@@ -1,0 +1,34 @@
+<Atomic>
+	<CmdID>xxcmdidxx</CmdID>
+	<Add>
+		<CmdID>xxcmdidxx</CmdID>
+		<Item>
+		<Target>
+			<LocURI>./Device/Vendor/MSFT/Accounts/Users/testuser1</LocURI>
+		</Target>
+		</Item>
+	</Add>
+	<Add>
+		<CmdID>xxcmdidxx</CmdID>
+		<Item>
+		<Target>
+			<LocURI>./Device/Vendor/MSFT/Accounts/Users/testuser1/Password</LocURI>
+		</Target>
+		<Meta>
+			<Type xmlns="syncml:metinf">text/plain</Type>
+			<Format xmlns="syncml:metinf">chr</Format>
+		</Meta>
+		<Data>testpass</Data>
+		</Item>
+	</Add>
+	<Get>
+		<CmdID>xxcmdidxx</CmdID>
+		<Item>
+		<Target>
+			<LocURI>./DevDetail/Ext/Microsoft/LocalTime</LocURI>
+		</Target>
+		</Item>
+	</Get>	
+</Atomic>
+
+

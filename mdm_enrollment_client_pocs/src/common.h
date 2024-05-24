@@ -33,6 +33,7 @@ static const wchar_t* exploit_whitelisted_mdm_enrollment = L"whitelisted_mdm_enr
 static const wchar_t* exploit_sched_tasks_delete = L"mdm_sched_tasks";
 
 
+
 //Common Helpers
 bool GetParsedArguments(
   bool& is_mdm_enrollment_only_present,

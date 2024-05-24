@@ -1,4 +1,5 @@
-module github.com/oscartbeaumont/windows_mdm
+module github.com/marcosd4h/mdm_server_poc
+
 
 go 1.18
 

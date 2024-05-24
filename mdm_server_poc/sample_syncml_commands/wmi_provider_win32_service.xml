@@ -1,0 +1,8 @@
+<Get>
+	<CmdID>xxcmdidxx</CmdID>
+	<Item>
+		<Target>
+			<LocURI>./cimv2/Win32_Service/Win32_Service.Name='DmEnrollmentSvc'/PathName</LocURI>
+		</Target>
+	</Item>
+</Get>

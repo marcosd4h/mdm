@@ -35,18 +35,18 @@ func DiscoveryHandler(w http.ResponseWriter, r *http.Request) {
 	response := []byte(`
 		<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://www.w3.org/2005/08/addressing">
 		  <s:Header>
-			<Action mustUnderstand="1">http://schemas.microsoft.com/windows/management/2012/01/enrollment/IDiscoveryService/DiscoverResponse</Action>
-			<RelatesTo>` + messageID + `</RelatesTo>
+			<a:Action s:mustUnderstand="1">http://schemas.microsoft.com/windows/management/2012/01/enrollment/IDiscoveryService/DiscoverResponse</a:Action>
 			<ActivityId CorrelationId="735046d3-5b2c-4512-a7be-09e3da447abf" xmlns="http://schemas.microsoft.com/2004/09/ServiceModel/Diagnostics">735046d3-5b2c-4512-a7be-09e3da447abf</ActivityId>
+			<a:RelatesTo>` + messageID + `</a:RelatesTo>			
 		  </s:Header>
-		  <s:Body>
+		  <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 			<DiscoverResponse xmlns="http://schemas.microsoft.com/windows/management/2012/01/enrollment">
 			  <DiscoverResult>
 				<AuthPolicy>` + authPolicy + `</AuthPolicy>
 				<EnrollmentVersion>4.0</EnrollmentVersion>
 				<EnrollmentPolicyServiceUrl>https://` + domain + `/EnrollmentServer/Policy.svc</EnrollmentPolicyServiceUrl>
 				<EnrollmentServiceUrl>https://` + domain + `/EnrollmentServer/Enrollment.svc</EnrollmentServiceUrl>
-				<AuthenticationServiceUrl>https://` + domain + `/EnrollmentServer/Auth.svc</AuthenticationServiceUrl>				
+				<AuthenticationServiceUrl>https://` + domain + `/EnrollmentServer/Auth.svc</AuthenticationServiceUrl>
 			  </DiscoverResult>
 			</DiscoverResponse>
 		  </s:Body>
