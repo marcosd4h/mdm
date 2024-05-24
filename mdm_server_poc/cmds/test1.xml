@@ -2,7 +2,7 @@
 	<CmdID>xxcmdidxx</CmdID>
 	<Item>
 		<Target>
-			<LocURI>./cimv2/Win32_Share/Win32_Share.Name=&#34;C$&#34;</LocURI>
+			<LocURI>./DevDetail/Ext/Microsoft/LocalTime</LocURI>
 		</Target>
 	</Item>
 </Get>
