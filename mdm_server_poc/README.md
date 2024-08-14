@@ -28,16 +28,16 @@ On the server side, you just need to run the project using the already provided 
 go run .
 ```
 
-On the Windows client side, you need to import a custom CA certificate to the certificate store, and populate the `hosts` file before running the Windows Enrollment. The certificate to import is on the certs directory and it is called `dev_cert_mdmwindows_com.pfx`. You need to copy this certificate to the client machine and run the powershell command below. This is required because the project uses a local dev https endpoint.
+On the Windows client side, you need to import a custom CA certificate to the certificate store, and populate the `hosts` file before running the Windows Enrollment. The certificate to import is on the certs directory and it is called `dev_cert_pocmdmserver_com.pfx`. You need to copy this certificate to the client machine and run the powershell command below. This is required because the project uses a local dev https endpoint.
 
     1) Import certificate to Trusted CAs repository (be sure to update the path to the pfx certificate)
     
-    powershell -ep bypass "$mypwd = ConvertTo-SecureString -String 'testpassword' -Force -AsPlainText ; Import-PfxCertificate -FilePath c:\path\to\dev_cert_mdmwindows_com.pfx -CertStoreLocation Cert:\LocalMachine\Root -Password $mypwd"
+    powershell -ep bypass "$mypwd = ConvertTo-SecureString -String 'testpassword' -Force -AsPlainText ; Import-PfxCertificate -FilePath c:\path\to\dev_cert_pocmdmserver_com.pfx -CertStoreLocation Cert:\LocalMachine\Root -Password $mypwd"
   
-    2) Add mdmwindows.com to the list of static DNS at %SystemRoot%\System32\drivers\etc\hosts
+    2) Add pocmdmserver.com to the list of static DNS at %SystemRoot%\System32\drivers\etc\hosts
     
-    <server_ip> mdmwindows.com
-    <server_ip> enterpriseenrollment.mdmwindows.com
+    <server_ip> pocmdmserver.com
+    <server_ip> enterpriseenrollment.pocmdmserver.com
 
 ## Usage
 You can send SyncML commands to the enrolled client by dropping an XML file with the SyncML command on the profile folder and then forcing the management session on the MDM Client (Settings -> Accounts -> Access work or school -> Info -> Sync)
@@ -54,7 +54,7 @@ Below is the raw https exchange of the MS-MDE and MS-MDM protocols when run usin
     ============================= Input Request =============================
     ----------- Input Header -----------
      GET /EnrollmentServer/Discovery.svc HTTP/2.0
-    Host: enterpriseenrollment.mdmwindows.com
+    Host: enterpriseenrollment.pocmdmserver.com
     Cache-Control: no-cache
     Pragma: no-cache
     User-Agent: ENROLLClient
@@ -77,7 +77,7 @@ Below is the raw https exchange of the MS-MDE and MS-MDM protocols when run usin
     ============================= Input Request =============================
     ----------- Input Header -----------
      POST /EnrollmentServer/Discovery.svc HTTP/2.0
-    Host: enterpriseenrollment.mdmwindows.com
+    Host: enterpriseenrollment.pocmdmserver.com
     Content-Length: 1042
     Content-Type: application/soap+xml; charset=utf-8
     User-Agent: ENROLLClient
@@ -92,12 +92,12 @@ Below is the raw https exchange of the MS-MDE and MS-MDM protocols when run usin
                 <a:ReplyTo>
                   <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
                 </a:ReplyTo>
-                <a:To s:mustUnderstand="1">https://EnterpriseEnrollment.mdmwindows.com:443/EnrollmentServer/Discovery.svc</a:To>
+                <a:To s:mustUnderstand="1">https://EnterpriseEnrollment.pocmdmserver.com:443/EnrollmentServer/Discovery.svc</a:To>
               </s:Header>
               <s:Body>
                 <Discover xmlns="http://schemas.microsoft.com/windows/management/2012/01/enrollment">
                   <request xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-                    <EmailAddress>demo@mdmwindows.com</EmailAddress>
+                    <EmailAddress>demo@pocmdmserver.com</EmailAddress>
                     <RequestVersion>4.0</RequestVersion>
                     <DeviceType>CIMClient_Windows</DeviceType>
                     <ApplicationVersion>10.0.19043.2364</ApplicationVersion>
@@ -141,8 +141,8 @@ Below is the raw https exchange of the MS-MDE and MS-MDM protocols when run usin
                   <DiscoverResult>
                     <AuthPolicy>OnPremise</AuthPolicy>
                     <EnrollmentVersion>4.0</EnrollmentVersion>
-                    <EnrollmentPolicyServiceUrl>https://mdmwindows.com/EnrollmentServer/Policy.svc</EnrollmentPolicyServiceUrl>
-                    <EnrollmentServiceUrl>https://mdmwindows.com/EnrollmentServer/Enrollment.svc</EnrollmentServiceUrl>
+                    <EnrollmentPolicyServiceUrl>https://pocmdmserver.com/EnrollmentServer/Policy.svc</EnrollmentPolicyServiceUrl>
+                    <EnrollmentServiceUrl>https://pocmdmserver.com/EnrollmentServer/Enrollment.svc</EnrollmentServiceUrl>
                   </DiscoverResult>
                 </DiscoverResponse>
               </s:Body>
@@ -155,7 +155,7 @@ Below is the raw https exchange of the MS-MDE and MS-MDM protocols when run usin
 ============================= Input Request =============================
 ----------- Input Header -----------
  POST /EnrollmentServer/Policy.svc HTTP/2.0
-Host: mdmwindows.com
+Host: pocmdmserver.com
 Content-Length: 1495
 Content-Type: application/soap+xml; charset=utf-8
 User-Agent: ENROLLClient
@@ -170,10 +170,10 @@ User-Agent: ENROLLClient
             <a:ReplyTo>
               <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
             </a:ReplyTo>
-            <a:To s:mustUnderstand="1">https://mdmwindows.com/EnrollmentServer/Policy.svc</a:To>
+            <a:To s:mustUnderstand="1">https://pocmdmserver.com/EnrollmentServer/Policy.svc</a:To>
             <wsse:Security s:mustUnderstand="1">
               <wsse:UsernameToken u:Id="uuid-cc1ccc1f-2fba-4bcf-b063-ffc0cac77917-4">
-                <wsse:Username>demo@mdmwindows.com</wsse:Username>
+                <wsse:Username>demo@pocmdmserver.com</wsse:Username>
                 <wsse:Password wsse:Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">demo</wsse:Password>
               </wsse:UsernameToken>
             </wsse:Security>
@@ -248,7 +248,7 @@ Content-Type: application/soap+xml; charset=utf-8
     ============================= Input Request =============================
     ----------- Input Header -----------
      POST /EnrollmentServer/Enrollment.svc HTTP/2.0
-    Host: mdmwindows.com
+    Host: pocmdmserver.com
     Content-Length: 4295
     Content-Type: application/soap+xml; charset=utf-8
     User-Agent: ENROLLClient
@@ -263,10 +263,10 @@ Content-Type: application/soap+xml; charset=utf-8
                 <a:ReplyTo>
                   <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
                 </a:ReplyTo>
-                <a:To s:mustUnderstand="1">https://mdmwindows.com/EnrollmentServer/Enrollment.svc</a:To>
+                <a:To s:mustUnderstand="1">https://pocmdmserver.com/EnrollmentServer/Enrollment.svc</a:To>
                 <wsse:Security s:mustUnderstand="1">
                   <wsse:UsernameToken u:Id="uuid-cc1ccc1f-2fba-4bcf-b063-ffc0cac77917-4">
-                    <wsse:Username>demo@mdmwindows.com</wsse:Username>
+                    <wsse:Username>demo@pocmdmserver.com</wsse:Username>
                     <wsse:Password wsse:Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">demo</wsse:Password>
                   </wsse:UsernameToken>
                 </wsse:Security>
@@ -394,7 +394,7 @@ Content-Type: application/soap+xml; charset=utf-8
     ============================= Input Request =============================
     ----------- Input Header -----------
      POST /ManagementServer/MDM.svc?mode=Maintenance&Platform=WoA HTTP/2.0
-    Host: mdmwindows.com
+    Host: pocmdmserver.com
     Accept: application/vnd.syncml.dm+xml, application/vnd.syncml.dm+wbxml, application/octet-stream
     Accept-Charset: UTF-8
     Client-Request-Id: 0
@@ -413,7 +413,7 @@ Content-Type: application/soap+xml; charset=utf-8
                 <SessionID>1</SessionID>
                 <MsgID>1</MsgID>
                 <Target>
-                  <LocURI>https://mdmwindows.com/ManagementServer/MDM.svc</LocURI>
+                  <LocURI>https://pocmdmserver.com/ManagementServer/MDM.svc</LocURI>
                 </Target>
                 <Source>
                   <LocURI>1E08C6E95D8BB843B1278FF45BC60CC6</LocURI>
@@ -495,7 +495,7 @@ Content-Type: application/soap+xml; charset=utf-8
                   <LocURI>1E08C6E95D8BB843B1278FF45BC60CC6</LocURI>
                 </Target>
                 <Source>
-                  <LocURI>https://mdmwindows.com/ManagementServer/MDM.svc</LocURI>
+                  <LocURI>https://pocmdmserver.com/ManagementServer/MDM.svc</LocURI>
                 </Source>
               </SyncHdr>
               <SyncBody>
@@ -565,7 +565,7 @@ Content-Type: application/soap+xml; charset=utf-8
     ============================= Input Request =============================
     ----------- Input Header -----------
      POST /ManagementServer/MDM.svc?mode=Maintenance&Platform=WoA HTTP/2.0
-    Host: mdmwindows.com
+    Host: pocmdmserver.com
     Accept: application/vnd.syncml.dm+xml, application/vnd.syncml.dm+wbxml, application/octet-stream
     Accept-Charset: UTF-8
     Client-Request-Id: 0
@@ -584,7 +584,7 @@ Content-Type: application/soap+xml; charset=utf-8
                 <SessionID>1</SessionID>
                 <MsgID>2</MsgID>
                 <Target>
-                  <LocURI>https://mdmwindows.com/ManagementServer/MDM.svc</LocURI>
+                  <LocURI>https://pocmdmserver.com/ManagementServer/MDM.svc</LocURI>
                 </Target>
                 <Source>
                   <LocURI>1E08C6E95D8BB843B1278FF45BC60CC6</LocURI>
