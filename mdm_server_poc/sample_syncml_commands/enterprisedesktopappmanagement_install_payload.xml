@@ -16,7 +16,7 @@
 							&lt;Product Version="1.0.0.0"&gt;
 								&lt;Download&gt;
 									&lt;ContentURLList&gt;
-										&lt;ContentURL&gt;https://mdmwindows.com/static/payload.msi&lt;/ContentURL&gt;
+										&lt;ContentURL&gt;https://enterpriseenrollment.pocmdmserver.com/static/payload.msi&lt;/ContentURL&gt;
 									&lt;/ContentURLList&gt;
 								&lt;/Download&gt;
 								&lt;Validation&gt;
