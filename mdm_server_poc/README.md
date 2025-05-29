@@ -40,7 +40,7 @@ On the Windows client side, you need to import a custom CA certificate to the ce
     <server_ip> enterpriseenrollment.pocmdmserver.com
 
 ## Usage
-You can send SyncML commands to the enrolled client by dropping an XML file with the SyncML command on the profile folder and then forcing the management session on the MDM Client (Settings -> Accounts -> Access work or school -> Info -> Sync)
+You can send SyncML commands to the enrolled client by dropping an XML file with the SyncML command on the `cmds` folder and then forcing the management session on the MDM Client (Settings -> Accounts -> Access work or school -> Info -> Sync)
 There are examples of SyncML commands on the sample_syncml_commands folder
 
 ## Protocol Details
