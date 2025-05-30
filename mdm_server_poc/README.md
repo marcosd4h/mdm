@@ -32,7 +32,7 @@ On the Windows client side, you need to import a custom CA certificate to the ce
 
     1) Import certificate to Trusted CAs repository (be sure to update the path to the pfx certificate)
     
-    powershell -ep bypass "$mypwd = ConvertTo-SecureString -String 'testpassword' -Force -AsPlainText ; Import-PfxCertificate -FilePath c:\path\to\dev_cert_pocmdmserver_com.pfx -CertStoreLocation Cert:\LocalMachine\Root -Password $mypwd"
+    powershell -ep bypass "$mypwd = ConvertTo-SecureString -String 'testpassword' -Force -AsPlainText ; Import-PfxCertificate -FilePath dev_cert_pocmdmserver_com.pfx -CertStoreLocation Cert:\LocalMachine\Root -Password $mypwd"
   
     2) Add pocmdmserver.com to the list of static DNS at %SystemRoot%\System32\drivers\etc\hosts
     
