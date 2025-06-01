@@ -39,6 +39,8 @@ On the Windows client side, you need to import a custom CA certificate to the ce
     <server_ip> pocmdmserver.com
     <server_ip> enterpriseenrollment.pocmdmserver.com
 
+Afterwards, go to "Settings" > "Accounts" > "Access work or school" > "Connect" > Enter an `<username>@pocmdmserver.com` email to initiate the enrollment process. You can also provide an email address belonging to a different domain, but will then also need to specify `https://enterpriseenrollment.pocmdmserver.com` as MDM server URL.
+
 ## Usage
 You can send SyncML commands to the enrolled client by dropping an XML file with the SyncML command on the profile folder and then forcing the management session on the MDM Client (Settings -> Accounts -> Access work or school -> Info -> Sync)
 There are examples of SyncML commands on the sample_syncml_commands folder
