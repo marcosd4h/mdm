@@ -159,9 +159,9 @@ void ShowHelp() {
   wprintf(L" --exploit <target_exploit>");
   wprintf(L" --enroll-webservice <enroll_webservice_url>\n");
   wprintf(L"Supported Exploits: \n");
-  wprintf(L" exploit_aad_mdm_enrollment (Unprivileged MDM Device enrollment)\n");
+  wprintf(L" aad_mdm_enrollment (Unprivileged MDM Device enrollment)\n");
   wprintf(L" whitelisted_mdm_enrollment (Non-elevated local admin MDM Device enrollment\n");
-  wprintf(L" exploit_sched_tasks_delete (MDM Enrollment break throuh MDM Schedtasks deletion\n");
+  wprintf(L" mdm_sched_tasks (MDM Enrollment break throuh MDM Schedtasks deletion\n");
   wprintf(L"Usage Examples: \n");
   wprintf(L" mdm_enrollment_client_pocs.exe --exploit aad_mdm_enrollment --enroll-webservice https://mdm.email.com/EnrollmentServer/Discovery.svc\n");
   wprintf(L" mdm_enrollment_client_pocs.exe --exploit whitelisted_mdm_enrollment --enroll-webservice https://mdm.email.com/EnrollmentServer/Discovery.svc\n");
